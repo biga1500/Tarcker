@@ -1,0 +1,20 @@
+# Core dependencies (cross-platform)
+# No mandatory third-party packages — stdlib only by default.
+# Install the extras below for your platform:
+
+# Linux (X11) — required for window tracking
+# xdotool must be installed via your package manager:
+#   sudo apt install xdotool xprintidle   (Debian/Ubuntu)
+#   sudo dnf install xdotool              (Fedora)
+#   sudo pacman -S xdotool                (Arch)
+
+# Windows — uncomment to install
+# pywin32
+# psutil
+# plyer          # desktop notifications (optional)
+# win10toast     # desktop notifications (optional, alternative)
+
+# macOS — PyObjC is usually pre-installed; no extra packages needed.
+
+# Optional: send HTML emails with rich formatting
+# Already uses stdlib smtplib — no extra packages needed.
