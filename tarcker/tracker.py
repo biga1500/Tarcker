@@ -244,6 +244,7 @@ class ActivityTracker:
             self._idle_start = None
 
     def run(self) -> None:
+        from tarcker import live_log
         poll = self.config["poll_interval"]
         idle_threshold = self.config["idle_threshold"]
         logger.info("Tarcker started (poll=%ss, idle_threshold=%ss)", poll, idle_threshold)
@@ -263,6 +264,7 @@ class ActivityTracker:
                     self._session_start = None
                     self._idle_start = idle_started
                     self._is_idle = True
+                    live_log.log_idle(started=True)
                     logger.debug("User went idle")
             else:
                 # User is active
@@ -270,6 +272,7 @@ class ActivityTracker:
                     # Just returned from idle
                     self._flush_idle(now)
                     self._is_idle = False
+                    live_log.log_idle(started=False)
                     logger.debug("User returned from idle")
 
                 app, title = get_active_window()
@@ -280,5 +283,7 @@ class ActivityTracker:
                     self._current_app = app
                     self._current_title = title
                     self._session_start = now
+                    cat = categorize(app, title, self.config["categories"])
+                    live_log.log_window(app, title, cat)
 
             time.sleep(poll)

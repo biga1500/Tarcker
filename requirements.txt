@@ -1,9 +1,14 @@
-# Dependências Windows (obrigatórias)
-pywin32
-psutil
+# ── Obrigatório ──────────────────────────────────────────────────────────────
+pywin32       # win32gui / win32process — rastrear janela ativa (Windows)
+psutil        # info de processos
+pynput        # keylogger cross-platform
+Pillow        # screenshots (ImageGrab)
 
-# Notificação desktop no Windows (escolha uma)
-plyer
+# ── Notificação desktop ───────────────────────────────────────────────────────
+plyer         # notify no Windows/Linux/macOS
 
-# Dependências opcionais
-# win10toast   # alternativa ao plyer para notificações
+# ── Bandeja do sistema (tray.pyw) ─────────────────────────────────────────────
+pystray       # ícone na bandeja
+
+# ── Nenhuma dependência extra para browser history, SQLite ou email ───────────
+# (usa stdlib: sqlite3, smtplib, shutil, tempfile)

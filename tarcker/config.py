@@ -40,6 +40,27 @@ DEFAULT_CONFIG = {
         "output_dir": "~/.tarcker/reports"
     },
 
+    # Screenshots
+    "screenshots": {
+        "enabled": True,
+        "interval_s": 300,   # every 5 minutes
+        "quality": 60,       # JPEG quality (1-95)
+        "max_width": 1920
+    },
+
+    # Browser history sync
+    "browser_history": {
+        "interval_s": 60
+    },
+
+    # Live log: show a real-time feed of events in the terminal
+    "live_log": {
+        "enabled": True,
+        "show_keystrokes": True,   # show typed text in the feed
+        "show_screenshots": True,
+        "show_browser": True
+    },
+
     # App categories: map substrings (lowercase) to category names
     "categories": {
         "code": ["code", "vscode", "vim", "neovim", "pycharm", "intellij",
