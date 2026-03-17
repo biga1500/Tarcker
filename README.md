@@ -15,21 +15,37 @@ Monitor de atividades para Linux/macOS/Windows que rastreia o que você faz no c
 
 ## Instalação
 
+### Windows
+
+```bat
+# Instala dependências e cria config padrão
+setup.bat
+```
+
+Ou manualmente:
+```bat
+pip install pywin32 psutil plyer
+```
+
 ### Linux (Debian/Ubuntu)
 
 ```bash
-# Instale as dependências do sistema
 sudo apt install xdotool xprintidle libnotify-bin
-
-# Configure e instale o serviço systemd
 bash setup.sh
 ```
 
-### Executar manualmente
+## Executar
 
-```bash
-python3 main.py
+### Windows — terminal normal
+```bat
+python main.py
 ```
+
+### Windows — bandeja do sistema (sem janela de console)
+```bat
+pythonw tray.pyw
+```
+Aparece um ícone roxo na bandeja do sistema. Clique com o botão direito para ver o resumo, abrir relatórios ou sair.
 
 ## Uso
 
