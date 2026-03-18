@@ -1,0 +1,27 @@
+[Unit]
+Description=Tarcker — monitor de atividade pessoal
+After=network.target graphical-session.target
+# Só inicia quando há sessão gráfica (necessário para capturar janelas)
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/python3 /home/user/Tarcker/main.py --no-log
+WorkingDirectory=/home/user/Tarcker
+Restart=on-failure
+RestartSec=10
+
+# Variáveis de ambiente da sessão gráfica (para xprintidle, Xorg, Wayland, etc.)
+Environment=DISPLAY=:0
+Environment=XAUTHORITY=%h/.Xauthority
+Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+# XDG_RUNTIME_DIR é necessário para pipewire/wayland
+Environment=XDG_RUNTIME_DIR=/run/user/1000
+
+# Logs vão para journald:  journalctl --user -u tarcker -f
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=tarcker
+
+[Install]
+WantedBy=graphical-session.target
